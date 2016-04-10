@@ -18,7 +18,7 @@ public class DebugPauseScript : MonoBehaviour {
     void Update()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
-        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Grip))
         {
             Debug.Break();
         }

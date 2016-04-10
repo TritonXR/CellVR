@@ -74,7 +74,6 @@ public class GrabScript : MonoBehaviour
             //If it got something, pull it.
             if (hit.transform != null)
             {
-                Debug.Log("hit");
                 //Debug.Log(hit.distance);
                 //grabPoints[i].GetComponent<LineRenderer>().SetPosition(1, new Vector3(0, 0, hit.distance));
                 //hit.rigidbody.AddForce((m_hands[i].gameObject.transform.position - hit.transform.position) * .5f, ForceMode.Impulse);
@@ -83,7 +82,6 @@ public class GrabScript : MonoBehaviour
 
             else
             {
-                Debug.Log("mufin");
 
                 //grabPoints[i].GetComponent<LineRenderer>().SetPosition(1, new Vector3(0, 0, 5));
                 grabPoints[i].GetComponent<LineRenderer>().SetColors(Color.white, Color.white);

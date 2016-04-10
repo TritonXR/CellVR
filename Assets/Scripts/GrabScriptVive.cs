@@ -10,7 +10,9 @@ public class GrabScriptVive : MonoBehaviour {
   SteamVR_TrackedObject trackedObj;
   FixedJoint joint;
 
-
+  //The info screen attached to this hand.
+  public GameObject infoScreen;
+  
   //Keeps track of whether an object is being dragged, don't highlight things if you
   //are currently dragging.
   public bool isGrabbing = false;
@@ -21,6 +23,11 @@ public class GrabScriptVive : MonoBehaviour {
 
   void FixedUpdate() {
     var device = SteamVR_Controller.Input((int)trackedObj.index);
+
+    if(device.GetTouchDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+    {
+      infoScreen.SetActive(!infoScreen.activeSelf);
+    }
 
     //Start grabbing.
     if(currentlySelectedObject != null && joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger)) {
