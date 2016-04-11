@@ -38,7 +38,6 @@ public class CellIO : MonoBehaviour {
 
     else if(type == InfoStrings.nucleus) {
       if(inputs[atpIndex] || inputs[proteinIndex]) {
-
         Output();
 
       }
