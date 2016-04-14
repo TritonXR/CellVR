@@ -1,31 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This class handles molecule spawning and keeping the organelles in the cell (Semi-Permeable membrane)
+/// To add new things spawning, increase inputNums, add a public float Frequency for it, and add a line adding it to randomFrequency in Start.
+/// </summary>
 public class Environment : MonoBehaviour {
 
   public AudioSource bounceSound;
   public AudioSource spawnSound;
 
+  //Where things spawn.
   public GameObject[] spawnPoints = new GameObject[4];
   const int inputNums = 5;
   int[] randomInputs = new int[inputNums];
-  Object[] randomFrequency = new Object[10];
 
+  //Used to randomly pick a molecule. Great use of memory.
+  Object[] randomFrequency = new Object[100];
+
+  //The chances of anything to spawn. Make sure they add up to 1.0f!
   public float atpFrequency = 0.2f;
   public float aminoFrequency = 0.2f;
   public float poisonFrequency = 0.2f;
   public float proteinFrequency = 0.2f;
   public float glucoseFrequency = 0.2f;
 
-  private Vector3 floatBox;
-  public static Environment environment;
   public float throwThreshold;
 
   void Awake() {
-
-    environment = this;
-    //	floatBox = GetComponent<BoxCollider>().size;
-
   }
 
   // Use this for initialization
@@ -33,16 +35,17 @@ public class Environment : MonoBehaviour {
 
     int frequencyIndex = 0;
 
-    for(int i = 0; i < (int)(atpFrequency * 10); i++) { randomFrequency[frequencyIndex++] = Prefabs.atp; }
-    for(int i = 0; i < (int)(aminoFrequency * 10); i++) { randomFrequency[frequencyIndex++] = Prefabs.amino; }
-    for(int i = 0; i < (int)(poisonFrequency * 10); i++) { randomFrequency[frequencyIndex++] = Prefabs.poison; }
-    for(int i = 0; i < (int)(proteinFrequency * 10); i++) { randomFrequency[frequencyIndex++] = Prefabs.proteins; }
-    for(int i = 0; i < (int)(glucoseFrequency * 10); i++) { randomFrequency[frequencyIndex++] = Prefabs.glucose; }
+    for(int i = 0; i < (int)(atpFrequency * 100); i++) { randomFrequency[frequencyIndex++] = Prefabs.atp; }
+    for(int i = 0; i < (int)(aminoFrequency * 100); i++) { randomFrequency[frequencyIndex++] = Prefabs.amino; }
+    for(int i = 0; i < (int)(poisonFrequency * 100); i++) { randomFrequency[frequencyIndex++] = Prefabs.poison; }
+    for(int i = 0; i < (int)(proteinFrequency * 100); i++) { randomFrequency[frequencyIndex++] = Prefabs.proteins; }
+    for(int i = 0; i < (int)(glucoseFrequency * 100); i++) { randomFrequency[frequencyIndex++] = Prefabs.glucose; }
 
     StartCoroutine(spawnRandom());
 
   }
 
+  //Keep things in the cell by bouncing them backwards.
   void OnTriggerExit(Collider other) {
 
     Info otherInfo = other.GetComponent<Info>();
@@ -85,12 +88,6 @@ public class Environment : MonoBehaviour {
 
   }
 
-  public Vector3 getSize() {
-
-    return floatBox;
-
-  }
-
   IEnumerator spawnRandom() {
 
     while(true) {
@@ -98,8 +95,8 @@ public class Environment : MonoBehaviour {
       yield return new WaitForSeconds(Random.Range(5, 10));
 
       Vector3 spawnLocation = spawnPoints[Random.Range(0, 4)].transform.position;
-
-      GameObject.Instantiate(randomFrequency[Random.Range(0, 10)],
+      
+      GameObject.Instantiate(randomFrequency[Random.Range(0, 100)],
                             spawnLocation, this.transform.rotation);
 
       spawnSound.Play();

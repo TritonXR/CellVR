@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: Fix Sticky bug: Throw something too hard and the hand will still have it selected. Probably too fast for OnTriggerExit to catch it. Currently ignoring.
+
 [RequireComponent(typeof(SteamVR_TrackedObject))]
 public class GrabScriptVive : MonoBehaviour {
   public GameObject currentlySelectedObject;
@@ -24,13 +26,18 @@ public class GrabScriptVive : MonoBehaviour {
   void FixedUpdate() {
     var device = SteamVR_Controller.Input((int)trackedObj.index);
 
+    //Handle info screens, only activate while holding button.
     if(device.GetTouchDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
     {
-      infoScreen.SetActive(!infoScreen.activeSelf);
+      infoScreen.SetActive(true);
     }
 
-    //Start grabbing.
-    if(currentlySelectedObject != null && joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger)) {
+    if(device.GetTouchUp(SteamVR_Controller.ButtonMask.ApplicationMenu)) {
+      infoScreen.SetActive(false);
+    }
+
+    //Start grabbing. Update: No longer on GetTouchDown allowing for "sticky" hands. Though the sticky bug exists, with too slow collision detection.
+    if(currentlySelectedObject != null && joint == null && device.GetTouch(SteamVR_Controller.ButtonMask.Trigger)) {
       currentlySelectedObject.GetComponent<GrabbableVive>().isActive = true;
 
       isGrabbing = true;

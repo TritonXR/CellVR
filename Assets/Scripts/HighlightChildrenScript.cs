@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 //Blatantly stolen from, including shaders:
 //http://nihilistdev.blogspot.com/2013/05/outline-in-unity-with-mesh-transparency.html
+//Also shader here: http://answers.unity3d.com/questions/60155/is-there-a-shader-to-only-add-an-outline.html
 public class HighlightChildrenScript : MonoBehaviour
 {
 
@@ -54,8 +55,10 @@ public class HighlightChildrenScript : MonoBehaviour
             materials = new Material[materials.Length];
             for (int j = 0; j < materials.Length; j++)
             {
-                materials[j] = new Material(Shader.Find("Outlined/Silhouette Only"));
-                materials[j].SetColor("_OutlineColor", outlineColor);
+                materials[j] = new Material(Shader.Find("Stencil/Outline"));
+
+                //materials[j] = new Material(Shader.Find("Outlined/Silhouette Only"));
+                //materials[j].SetColor("_OutlineColor", outlineColor);
             }
             outlineObj.GetComponent<MeshRenderer>().materials = materials;
 
