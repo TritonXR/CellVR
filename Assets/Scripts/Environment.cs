@@ -45,16 +45,20 @@ public class Environment : MonoBehaviour {
 
   }
 
-  //Keep things in the cell by bouncing them backwards.
+  /// <summary>
+  /// Handle interactions at cell border.
+  /// </summary>
+  /// <param name="other"></param>
   void OnTriggerExit(Collider other) {
 
-    Info otherInfo = other.GetComponent<Info>();
+    Info otherInfo = other.gameObject.GetComponent<Info>();
     if(otherInfo != null) {
       string otherType = otherInfo.getType();
-      Rigidbody otherRigid = other.GetComponent<Rigidbody>();
+      Rigidbody otherRigid = other.gameObject.GetComponent<Rigidbody>();
       Vector3 otherVector;
       otherVector = otherRigid.velocity;
 
+      //If this is a molecule that can be thrown out, and it's going fast enough, delete it.
       if(otherVector.magnitude > throwThreshold &&
                    otherType != InfoStrings.nucleus &&
                    otherType != InfoStrings.mitochondria &&
@@ -64,11 +68,17 @@ public class Environment : MonoBehaviour {
 
       }
 
+      //If it should be bounced back inside, then get the opposite direction and slightly modify it.
       else {
 
+        Debug.Log(other.name + " " + otherVector);
         otherVector = new Vector3(-otherVector.x * Random.Range(1.3f, 2.3f),
                                    -otherVector.y * Random.Range(1.3f, 2.3f),
                                    -otherVector.z * Random.Range(1.3f, 2.3f));
+
+
+        //Debug.Log(other.contacts.Length); 
+        //other.gameObject.transform = other.contacts
 
         otherRigid.AddForce(otherVector, ForceMode.Impulse);
         bounceSound.Play();

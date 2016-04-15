@@ -37,7 +37,7 @@ public class GrabScriptVive : MonoBehaviour {
     }
 
     //Start grabbing. Update: No longer on GetTouchDown allowing for "sticky" hands. Though the sticky bug exists, with too slow collision detection.
-    if(currentlySelectedObject != null && joint == null && device.GetTouch(SteamVR_Controller.ButtonMask.Trigger)) {
+    if(currentlySelectedObject != null && joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger)) {
       currentlySelectedObject.GetComponent<GrabbableVive>().isActive = true;
 
       isGrabbing = true;
