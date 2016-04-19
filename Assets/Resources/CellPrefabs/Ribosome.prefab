@@ -20,6 +20,7 @@ GameObject:
   - 82: {fileID: 8221578}
   - 114: {fileID: 11482328}
   - 114: {fileID: 11485458}
+  - 114: {fileID: 114000013532673078}
   m_Layer: 0
   m_Name: Ribosome
   m_TagString: Untagged
@@ -39,6 +40,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2347366
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -48,13 +50,14 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 9c20e36d9f0624516ac00a320d8daa46, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -352,3 +355,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185162}
   m_IsPrefabParent: 1
+--- !u!114 &114000013532673078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3023196f3a0b429611fa40d8ba4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

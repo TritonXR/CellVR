@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Info : MonoBehaviour {
-
-  public string type;
+public class CellResource : CellElement {
 
 	// Use this for initialization
 	void Start () {
@@ -12,12 +10,6 @@ public class Info : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-	
-	public string getType() {
-	
-	  return type;
 	
 	}
 }

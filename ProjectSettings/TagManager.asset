@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Glucose
+  - Mitochondria
+  - Nucleus
+  - Ribosome
+  - mRNA
+  - Amino Acid
+  - ATP
+  - Protein
+  - Poison
   layers:
   - Default
   - TransparentFX

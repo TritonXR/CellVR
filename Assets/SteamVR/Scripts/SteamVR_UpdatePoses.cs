@@ -4,12 +4,14 @@
 //
 //=============================================================================
 
+
 using UnityEngine;
 using Valve.VR;
 
 [RequireComponent(typeof(Camera))]
 public class SteamVR_UpdatePoses : MonoBehaviour
 {
+  /*
 	void Awake()
 	{
 		var camera = GetComponent<Camera>();
@@ -33,5 +35,7 @@ public class SteamVR_UpdatePoses : MonoBehaviour
 			SteamVR_Utils.Event.Send("new_poses_applied");
 		}
 	}
+  */
 }
+
 

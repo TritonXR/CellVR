@@ -15,6 +15,6 @@ public class MainMenuScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Application.LoadLevel("Cytoplasm");  
+        //Application.LoadLevel("Cytoplasm");  
     }
 }

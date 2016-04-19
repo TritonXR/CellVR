@@ -10,6 +10,7 @@ public class CellIO : MonoBehaviour {
 
   //array and indeces for each different input piece
   private bool[] inputs = new bool[numInputs];
+
   private const int atpIndex = 0;
   private const int mrnaIndex = 1;
   private const int aminoIndex = 2;

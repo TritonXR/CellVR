@@ -13,7 +13,7 @@ public class Environment : MonoBehaviour {
   //Where things spawn.
   public GameObject[] spawnPoints = new GameObject[4];
   const int inputNums = 5;
-  int[] randomInputs = new int[inputNums];
+ // int[] randomInputs = new int[inputNums];
 
   //Used to randomly pick a molecule. Great use of memory.
   Object[] randomFrequency = new Object[100];
