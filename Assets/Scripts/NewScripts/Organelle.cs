@@ -9,53 +9,48 @@ public abstract class Organelle : CellElement {
   //list of all inputs in this organelle
   protected Dictionary<string, int> inputs;
 
-	// Use this for initialization
-	void Start () {
+  // Use this for initialization
+  void Start() {
 
     combinationList = new List<Combination>();
     InitializeCombinations();
 
-	}
+  }
 	
-	// Update is called once per frame
-	void Update () {
+  // Update is called once per frame
+  void Update() {
 	
-	}
+  }
 
+  /// <summary>
+  /// Checks if cell resource collided with Organelle and performs necessary functions
+  /// if that resource was part of a combination
+  /// </summary>
+  /// <param name="other">Other.</param>
   void OnCollisionEnter(Collision other) {
 
     CellResource inputResource = other.gameObject.GetComponent<CellResource>();
 
-    if(inputResource) {
+    if (inputResource) {
 
       string inputIdentifier = inputResource.GetIdentifier();
 
       //checks if the input is part of an actual combination
-      if(IsCombination(inputIdentifier)) {
+      if (IsCombination(inputIdentifier)) {
 
         UpdateInputs(inputIdentifier);
         GameObject.Destroy(other.gameObject);
 
-        for (int i = 0; i < combinationList.Count; i++) {
+        CheckForCompleteCombinations();
 
-          if (combinationList[i].CombinationComplete(inputs)) {
 
-            List<string> outputs = combinationList[i].GetOutput();
-
-            for(int j = 0; j < outputs.Count; j++) {
-
-              Object outputPrefab = CellPrefabs.GetPrefabByIdentifier(outputs[i]);
-
-              GameObject.Instantiate(outputPrefab, this.transform.position, Quaternion.identity);
-
-           }
-
-          }
-        }
       }
     }
   }
 
+  /// <summary>
+  /// Initializes a combination for this organelle
+  /// </summary>
   public abstract void InitializeCombinations();
 
   void Output(List<string> outputIdentifiers) {
@@ -69,6 +64,11 @@ public abstract class Organelle : CellElement {
     }
   }
 
+  /// <summary>
+  /// Checks if the specified identifier is part of a combination for this organelle
+  /// </summary>
+  /// <returns><c>true</c> If the identifier is a combination <c>false</c> Otherwise .</returns>
+  /// <param name="identifier">Identifier.</param>
   private bool IsCombination(string identifier) {
 
     for (int i = 0; i < combinationList.Count; i++) {
@@ -83,6 +83,10 @@ public abstract class Organelle : CellElement {
     return false;
   }
 
+  /// <summary>
+  /// Updates the input dictionary with the specified input
+  /// </summary>
+  /// <param name="identifier">Identifier.</param>
   private void UpdateInputs(string identifier) {
 
     int inputCount;
@@ -90,5 +94,30 @@ public abstract class Organelle : CellElement {
     inputs.TryGetValue(identifier, out inputCount);
     inputs[identifier] = inputCount + 1;
 
+  }
+
+  /// <summary>
+  /// Checks if any of the combinations for this organelle are complete
+  /// </summary>
+  private void CheckForCompleteCombinations() {
+
+    //iterates through the list of combinations
+    for (int i = 0; i < combinationList.Count; i++) {
+
+      //checks the specific combination
+      if (combinationList[i].CombinationComplete(inputs)) {
+
+        //Gets the outputs of the combination
+        List<string> outputs = combinationList[i].GetOutput();
+
+        for (int j = 0; j < outputs.Count; j++) {
+
+          Object outputPrefab = CellPrefabs.GetPrefabByIdentifier(outputs[i]);
+
+          GameObject.Instantiate(outputPrefab, this.transform.position, Quaternion.identity);
+
+        }
+      }
+    }
   }
 }
