@@ -9,10 +9,10 @@ public class Combination {
   /// </summary>
   private struct CellInput {
 
-    public string identifier;
+    public CellIdentifier identifier;
     public int numRequired;
 
-    public CellInput(string identifier, int numRequired) {
+    public CellInput(CellIdentifier identifier, int numRequired) {
 
       this.identifier = identifier;
       this.numRequired = numRequired;
@@ -21,7 +21,7 @@ public class Combination {
   }
 
   private List<CellInput> inputs;
-  private List<string> outputs;
+  private List<CellIdentifier> outputs;
 
   /// <summary>
   /// Initializes a new cell combination that's possible
@@ -29,7 +29,7 @@ public class Combination {
   public Combination() {
 
     inputs = new List<CellInput>();
-    outputs = new List<string>();
+    outputs = new List<CellIdentifier>();
 
   }
 
@@ -38,7 +38,7 @@ public class Combination {
   /// </summary>
   /// <param name="identifier"> String identifier (tag) of the input </param>
   /// <param name="numRequired"> How many of this input are required for the combination </param>
-  public void InitializeInput(string identifier, int numRequired) {
+  public void InitializeInput(CellIdentifier identifier, int numRequired) {
 
     inputs.Add(new CellInput(identifier, numRequired));
 
@@ -48,7 +48,7 @@ public class Combination {
   /// Adds an input to this combination. Defaults number required to 1.
   /// </summary>
   /// <param name="identifier"> String identifier (tag) of the input </param>
-  public void InitializeInput(string identifier) {
+  public void InitializeInput(CellIdentifier identifier) {
 
     inputs.Add(new CellInput(identifier, 1));
 
@@ -58,7 +58,7 @@ public class Combination {
   /// Adds an output to this combination.
   /// </summary>
   /// <param name="identifier"></param>
-  public void InitializeOutput(string identifier) {
+  public void InitializeOutput(CellIdentifier identifier) {
 
     outputs.Add(identifier);
 
@@ -69,7 +69,7 @@ public class Combination {
   /// </summary>
   /// <param name="input"> The identifier of the input </param>
   /// <returns> True if valid, false otherwise </returns>
-  public bool CheckValidInput(string input) {
+  public bool CheckValidInput(CellIdentifier input) {
 
     for (int i = 0; i < inputs.Count; i++) {
 
@@ -85,7 +85,7 @@ public class Combination {
   }
 
 
-  public bool CombinationComplete(Dictionary<string, int> currentInputs) {
+  public bool CombinationComplete(Dictionary<CellIdentifier, int> currentInputs) {
 
     foreach (CellInput input in inputs) {
 
@@ -113,7 +113,7 @@ public class Combination {
 
   }
 
-  public List<string> GetOutput() {
+  public List<CellIdentifier> GetOutput() {
 
     return outputs;
 

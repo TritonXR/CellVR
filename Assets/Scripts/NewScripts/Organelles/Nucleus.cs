@@ -6,16 +6,16 @@ public class Nucleus : Organelle {
   public override void InitializeCombinations() {
 
     Combination MRNAOutput = new Combination();
-    MRNAOutput.InitializeInput(CellStrings.ATP);
-    MRNAOutput.InitializeOutput(CellStrings.MRNA);
+    MRNAOutput.InitializeInput(CellIdentifier.ATP);
+    MRNAOutput.InitializeOutput(CellIdentifier.MRNA);
 
     combinationList.Add(MRNAOutput);
 
     Combination OrganelleOutput = new Combination();
 
-    OrganelleOutput.InitializeInput(CellStrings.PROTEIN);
-    OrganelleOutput.InitializeOutput(CellStrings.MITOCHONDRIA);
-    OrganelleOutput.InitializeOutput(CellStrings.RIBOSOME);
+    OrganelleOutput.InitializeInput(CellIdentifier.PROTEIN);
+    OrganelleOutput.InitializeOutput(CellIdentifier.MITOCHONDRIA);
+    OrganelleOutput.InitializeOutput(CellIdentifier.RIBOSOME);
 
     combinationList.Add(OrganelleOutput);
 

@@ -18,11 +18,11 @@ public class CellPrefabs : MonoBehaviour {
   /// </summary>
   /// <returns> A prefab, for use with instantiation</returns>
   /// <param name="identifier">Cell element identifier.</param>
-  public static Object GetPrefabByIdentifier(string identifier) {
+  public static Object GetPrefabByIdentifier(CellIdentifier identifier) {
 
     for (int i = 0; i < CellPrefabs.prefabs.Length; i++) {
 
-      string id = ((GameObject)(CellPrefabs.prefabs[i])).gameObject.tag;
+      CellIdentifier id = ((GameObject)(CellPrefabs.prefabs[i])).GetComponent<CellElement>().GetIdentifier();
 
       if (id.Equals(identifier)) {
 

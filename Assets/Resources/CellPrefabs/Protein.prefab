@@ -11,17 +11,15 @@ GameObject:
   - 33: {fileID: 3325818}
   - 23: {fileID: 2377100}
   - 95: {fileID: 9531472}
-  - 114: {fileID: 11425114}
   - 65: {fileID: 6533086}
   - 54: {fileID: 5464132}
-  - 114: {fileID: 11423920}
   - 114: {fileID: 11418884}
   - 114: {fileID: 11421828}
   - 114: {fileID: 11449280}
-  - 114: {fileID: 114000011776551540}
+  - 114: {fileID: 114000012787054490}
   m_Layer: 0
   m_Name: Protein
-  m_TagString: Untagged
+  m_TagString: Protein
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +93,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126842}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: -0.9079235, y: 0.2698732, z: 0.87230945}
@@ -141,31 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshColor: {r: 1, g: 1, b: 1, a: 0.5}
   outlineColor: {r: 1, g: 1, b: 0, a: 1}
---- !u!114 &11423920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7e7849e3b44408a9171b4679eb18a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSound: {fileID: 0}
-  outputSound: {fileID: 0}
---- !u!114 &11425114
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a12eac1b3a44352bc67d53f5412200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: protein
 --- !u!114 &11449280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +178,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126842}
   m_IsPrefabParent: 1
---- !u!114 &114000011776551540
+--- !u!114 &114000012787054490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -213,6 +186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 126842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3f3023196f3a0b429611fa40d8ba4bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2221fb71e6854024eaf0ad1ed42fc0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifier: 4

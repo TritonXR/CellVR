@@ -7,11 +7,11 @@ public class Ribosome : Organelle {
 
     Combination proteinCombination = new Combination();
 
-    proteinCombination.InitializeInput(CellStrings.MRNA);
-    proteinCombination.InitializeInput(CellStrings.AMINO_ACID);
-    proteinCombination.InitializeInput(CellStrings.ATP);
+    proteinCombination.InitializeInput(CellIdentifier.MRNA);
+    proteinCombination.InitializeInput(CellIdentifier.AMINO_ACID);
+    proteinCombination.InitializeInput(CellIdentifier.ATP);
 
-    proteinCombination.InitializeOutput(CellStrings.PROTEIN);
+    proteinCombination.InitializeOutput(CellIdentifier.PROTEIN);
 
     combinationList.Add(proteinCombination);
 

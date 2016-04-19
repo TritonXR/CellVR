@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CellElement : MonoBehaviour {
 
-  private string identifier;
+  public CellIdentifier identifier;
 
 	// Use this for initialization
 	void Awake () {
@@ -15,7 +15,7 @@ public class CellElement : MonoBehaviour {
 	
 	}
 
-  public string GetIdentifier() {
+  public CellIdentifier GetIdentifier() {
 
     return identifier;
 

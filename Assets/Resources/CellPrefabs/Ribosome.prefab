@@ -11,19 +11,17 @@ GameObject:
   - 33: {fileID: 3375864}
   - 23: {fileID: 2347366}
   - 95: {fileID: 9579040}
-  - 114: {fileID: 11486670}
   - 54: {fileID: 5431640}
-  - 114: {fileID: 11409252}
   - 135: {fileID: 13524422}
   - 114: {fileID: 11434116}
   - 82: {fileID: 8299864}
   - 82: {fileID: 8221578}
   - 114: {fileID: 11482328}
   - 114: {fileID: 11485458}
-  - 114: {fileID: 114000013532673078}
+  - 114: {fileID: 114000012967375360}
   m_Layer: 0
   m_Name: Ribosome
-  m_TagString: Untagged
+  m_TagString: Ribosome
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,19 +253,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11409252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7e7849e3b44408a9171b4679eb18a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSound: {fileID: 8221578}
-  outputSound: {fileID: 8299864}
 --- !u!114 &11434116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,18 +293,6 @@ MonoBehaviour:
   isTool: 0
   isActive: 0
   soundThreshold: 0.5
---- !u!114 &11486670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a12eac1b3a44352bc67d53f5412200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: ribosome
 --- !u!135 &13524422
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -327,7 +300,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185162}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.75000024
@@ -355,7 +328,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185162}
   m_IsPrefabParent: 1
---- !u!114 &114000013532673078
+--- !u!114 &114000012967375360
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -363,6 +336,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 185162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3f3023196f3a0b429611fa40d8ba4bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c7b72ac64bc3b84a8b3b87fee25522e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifier: 6

@@ -51,18 +51,18 @@ public class Environment : MonoBehaviour {
   /// <param name="other"></param>
   void OnTriggerExit(Collider other) {
 
-    Info otherInfo = other.gameObject.GetComponent<Info>();
-    if(otherInfo != null) {
-      string otherType = otherInfo.getType();
-      Rigidbody otherRigid = other.gameObject.GetComponent<Rigidbody>();
-      Vector3 otherVector;
-      otherVector = otherRigid.velocity;
+    /*
+    CellElement collidedCellElement = other.GetComponent<CellElement>();
+
+    if(collidedCellElement) {
+
+      Rigidbody cellRigid = other.gameObject.GetComponent<Rigidbody>();
+      CellIdentifier cellID = collidedCellElement.GetIdentifier();
+
+      Vector3 cellVelocity = cellRigid.velocity;
 
       //If this is a molecule that can be thrown out, and it's going fast enough, delete it.
-      if(otherVector.magnitude > throwThreshold &&
-                   otherType != InfoStrings.nucleus &&
-                   otherType != InfoStrings.mitochondria &&
-                   otherType != InfoStrings.ribosome) {
+      if(cellVelocity.magnitude > throwThreshold && !(other.GetComponent<Organelle>())) {
 
         Destroy(other.gameObject);
 
@@ -71,20 +71,26 @@ public class Environment : MonoBehaviour {
       //If it should be bounced back inside, then get the opposite direction and slightly modify it.
       else {
 
-        Debug.Log(other.name + " " + otherVector);
-        otherVector = new Vector3(-otherVector.x * Random.Range(1.3f, 2.3f),
-                                   -otherVector.y * Random.Range(1.3f, 2.3f),
-                                   -otherVector.z * Random.Range(1.3f, 2.3f));
+        Debug.Log("HITTING");
 
 
-        //Debug.Log(other.contacts.Length); 
-        //other.gameObject.transform = other.contacts
+        cellVelocity = new Vector3(cellVelocity.x * Random.Range(1.3f, 2.3f),
+                                   cellVelocity.y * Random.Range(1.3f, 2.3f),
+                                   cellVelocity.z * Random.Range(1.3f, 2.3f));
 
-        otherRigid.AddForce(otherVector, ForceMode.Impulse);
+
+        cellRigid.AddForce(cellVelocity, ForceMode.Impulse);
         bounceSound.Play();
 
       }
     }
+    */
+
+
+  }
+
+  void OnCollisionEnter(Collision other) {
+
   }
 
   // Update is called once per frame

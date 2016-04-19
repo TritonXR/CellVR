@@ -7,12 +7,13 @@ public abstract class Organelle : CellElement {
   protected List<Combination> combinationList;
   
   //list of all inputs in this organelle
-  protected Dictionary<string, int> inputs;
+  protected Dictionary<CellIdentifier, int> inputs;
 
   // Use this for initialization
   void Start() {
 
     combinationList = new List<Combination>();
+    inputs = new Dictionary<CellIdentifier, int>();
     InitializeCombinations();
 
   }
@@ -29,11 +30,12 @@ public abstract class Organelle : CellElement {
   /// <param name="other">Other.</param>
   void OnCollisionEnter(Collision other) {
 
+    /*
     CellResource inputResource = other.gameObject.GetComponent<CellResource>();
 
     if (inputResource) {
 
-      string inputIdentifier = inputResource.GetIdentifier();
+      CellIdentifier inputIdentifier = inputResource.GetIdentifier();
 
       //checks if the input is part of an actual combination
       if (IsCombination(inputIdentifier)) {
@@ -46,14 +48,24 @@ public abstract class Organelle : CellElement {
 
       }
     }
+    */
+
+    float dot = Vector3.Dot(this.transform.position, (-transform.forward));
+    Vector3 reflection = this.transform.position.normalized * dot;
+    reflection += other.transform.forward;
+
+    other.rigidbody.velocity = other.rigidbody.transform.TransformDirection(reflection.normalized * 15.0f);
+
+  
   }
+
 
   /// <summary>
   /// Initializes a combination for this organelle
   /// </summary>
   public abstract void InitializeCombinations();
 
-  void Output(List<string> outputIdentifiers) {
+  void Output(List<CellIdentifier> outputIdentifiers) {
 
     for (int i = 0; i < outputIdentifiers.Count; i++) {
 
@@ -69,7 +81,7 @@ public abstract class Organelle : CellElement {
   /// </summary>
   /// <returns><c>true</c> If the identifier is a combination <c>false</c> Otherwise .</returns>
   /// <param name="identifier">Identifier.</param>
-  private bool IsCombination(string identifier) {
+  private bool IsCombination(CellIdentifier identifier) {
 
     for (int i = 0; i < combinationList.Count; i++) {
 
@@ -87,7 +99,7 @@ public abstract class Organelle : CellElement {
   /// Updates the input dictionary with the specified input
   /// </summary>
   /// <param name="identifier">Identifier.</param>
-  private void UpdateInputs(string identifier) {
+  private void UpdateInputs(CellIdentifier identifier) {
 
     int inputCount;
 
@@ -108,7 +120,7 @@ public abstract class Organelle : CellElement {
       if (combinationList[i].CombinationComplete(inputs)) {
 
         //Gets the outputs of the combination
-        List<string> outputs = combinationList[i].GetOutput();
+        List<CellIdentifier> outputs = combinationList[i].GetOutput();
 
         for (int j = 0; j < outputs.Count; j++) {
 
