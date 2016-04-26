@@ -30,7 +30,7 @@ public abstract class Organelle : CellElement {
   /// <param name="other">Other.</param>
   void OnCollisionEnter(Collision other) {
 
-    /*
+    
     CellResource inputResource = other.gameObject.GetComponent<CellResource>();
 
     if (inputResource) {
@@ -48,13 +48,8 @@ public abstract class Organelle : CellElement {
 
       }
     }
-    */
+    
 
-    float dot = Vector3.Dot(this.transform.position, (-transform.forward));
-    Vector3 reflection = this.transform.position.normalized * dot;
-    reflection += other.transform.forward;
-
-    other.rigidbody.velocity = other.rigidbody.transform.TransformDirection(reflection.normalized * 15.0f);
 
   
   }
